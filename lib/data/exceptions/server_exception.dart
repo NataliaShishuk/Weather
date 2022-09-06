@@ -1,10 +1,1 @@
-class ServerException implements Exception {
-  final String message;
-
-  ServerException(this.message);
-
-  @override
-  String toString() {
-    return "Exception: $message";
-  }
-}
+class ServerException implements Exception {}

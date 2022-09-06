@@ -14,11 +14,10 @@ class ApiWeatherDataSource implements WeatherDataSource {
   @override
   Future<WeatherModel> getCurrentWeather(String cityName) async {
     var url = ApiUrlFormater.getCurrentWeatherByCity(cityName);
-    var response = await client.get(url);
+    var response = await client.get(Uri.parse(url));
 
     if (!_isResponseSuccess(response)) {
-      throw ServerException(
-          'Error occured during sending request: ${response.body}');
+      throw ServerException();
     }
 
     return WeatherModel.fromJson(json.decode(response.body));

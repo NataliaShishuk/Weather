@@ -1,14 +1,14 @@
 import 'package:weather/data/environment.dart';
 
 class ApiUrlFormater {
-  static const server = 'https://api.openweathermap.org';
+  static const server = 'openweathermap.org';
+  static const baseApiUrl = 'https://api.$server/data/2.5';
   static final apiKey = Environment.apiKey;
   static final langCode = Environment.languageCode;
 
-  static Uri getCurrentWeatherByCity(String cityName) {
-    var url =
-        '$server/data/2.5/weather?q=$cityName&appid=$apiKey&lang=$langCode&units=metric';
+  static String getCurrentWeatherByCity(String cityName) =>
+      '$baseApiUrl/weather?q=$cityName&appid=$apiKey&lang=$langCode&units=metric';
 
-    return Uri.parse(url);
-  }
+  static String getWeatherIconUrl(String iconCode) =>
+      'https://$server/img/wn/$iconCode@2x.png';
 }
