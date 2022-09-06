@@ -6,7 +6,7 @@ class GetCurrentWeather {
 
   final WeatherRepository weatherRepository;
 
-  Future<WeatheResult> execute(String cityName) {
+  Future<WeatherResult> execute(String cityName) {
     return weatherRepository.getCurrentWeather(cityName);
   }
 }

@@ -7,14 +7,14 @@ import 'package:weather/data/models/weather_model.dart';
 import 'package:http/http.dart' as http;
 
 class ApiWeatherDataSource implements WeatherDataSource {
-  final http.Client client;
+  ApiWeatherDataSource(this.client);
 
-  ApiWeatherDataSource({required this.client});
+  final http.Client client;
 
   @override
   Future<WeatherModel> getCurrentWeather(String cityName) async {
-    var url = ApiUrlFormater.getCurrentWeatherByCity(cityName);
-    var response = await client.get(Uri.parse(url));
+    final url = ApiUrlFormater.getCurrentWeatherByCity(cityName);
+    final response = await client.get(Uri.parse(url));
 
     if (!_isResponseSuccess(response)) {
       throw ServerException();

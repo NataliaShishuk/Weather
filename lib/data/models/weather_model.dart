@@ -15,9 +15,8 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
         cityName: json['name'],
-        weatherElements: json['weather']
-            .map((element) => WeatherElementModel.fromJson(element))
-            .toList(),
+        weatherElements: List<WeatherElementModel>.from(json['weather']
+            .map((element) => WeatherElementModel.fromJson(element))),
         main: MainModel.fromJson(json['main']),
       );
 

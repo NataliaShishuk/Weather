@@ -1,7 +1,7 @@
 import 'package:weather/domain/entities/weather.dart';
 
-class WeatheResult {
-  const WeatheResult({
+class WeatherResult {
+  const WeatherResult({
     required this.weather,
     required this.isSuccess,
     required this.errorMessage,
@@ -11,13 +11,13 @@ class WeatheResult {
   final bool isSuccess;
   final String? errorMessage;
 
-  factory WeatheResult.success(Weather weather) => WeatheResult(
+  factory WeatherResult.success(Weather weather) => WeatherResult(
         weather: weather,
         isSuccess: true,
         errorMessage: null,
       );
 
-  factory WeatheResult.fail(String errorMessage) => WeatheResult(
+  factory WeatherResult.fail(String errorMessage) => WeatherResult(
         weather: null,
         isSuccess: false,
         errorMessage: errorMessage,

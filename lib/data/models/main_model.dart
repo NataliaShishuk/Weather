@@ -18,12 +18,12 @@ class MainModel {
   final double humidity;
 
   factory MainModel.fromJson(Map<String, dynamic> json) => MainModel(
-        temperature: json['temp'],
-        feelsLike: json['feels_like'],
-        minTemperature: json['temp_min'],
-        maxTemperature: json['temp_max'],
-        pressure: json['pressure'],
-        humidity: json['humidity'],
+        temperature: json['temp'].toDouble(),
+        feelsLike: json['feels_like'].toDouble(),
+        minTemperature: json['temp_min'].toDouble(),
+        maxTemperature: json['temp_max'].toDouble(),
+        pressure: json['pressure'].toDouble(),
+        humidity: json['humidity'].toDouble(),
       );
 
   Main toEntity() => Main(

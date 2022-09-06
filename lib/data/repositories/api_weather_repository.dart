@@ -11,18 +11,18 @@ class ApiWeatherRepository implements WeatherRepository {
   final WeatherDataSource weatherDataSource;
 
   @override
-  Future<WeatheResult> getCurrentWeather(String cityName) async {
+  Future<WeatherResult> getCurrentWeather(String cityName) async {
     try {
       final weatherModel = await weatherDataSource.getCurrentWeather(cityName);
       final weather = weatherModel.toEntity();
 
-      return WeatheResult.success(weather);
+      return WeatherResult.success(weather);
     } on ServerException {
-      return WeatheResult.fail('Error occured during sending request.');
+      return WeatherResult.fail('Error occured during sending request.');
     } on SocketException {
-      return WeatheResult.fail('Failed to conected to the network.');
+      return WeatherResult.fail('Failed to conected to the network.');
     } catch (e) {
-      return WeatheResult.fail('Something went wrong.');
+      return WeatherResult.fail('Something went wrong.');
     }
   }
 }
