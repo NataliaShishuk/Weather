@@ -1,14 +1,20 @@
 import 'package:weather/data/environment.dart';
 
 class ApiUrlFormater {
-  static const server = 'openweathermap.org';
-  static const baseApiUrl = 'https://api.$server/data/2.5';
-  static const apiKey = Environment.apiKey;
-  static const langCode = 'ru';
+  static const _protocol = 'https';
+  static const _server = 'openweathermap.org';
+  static const _baseUrl = '$_protocol://$_server';
+  static const _baseApiUrl = '$_protocol://api.$_server/data/2.5';
 
-  static String getCurrentWeatherByCity(String cityName) =>
-      '$baseApiUrl/weather?q=$cityName&appid=$apiKey&lang=$langCode&units=metric';
+  static const _apiKey = Environment.apiKey;
+  static const _units = 'metric';
+
+  static String getCurrentWeatherUrl(String cityName) =>
+      '$_baseApiUrl/weather?q=$cityName&appid=$_apiKey&units=$_units';
+
+  static String getForecastUrl(String cityName) =>
+      '$_baseApiUrl/forecast?q=$cityName&appid=$_apiKey&units=$_units';
 
   static String getWeatherIconUrl(String iconCode) =>
-      'https://$server/img/wn/$iconCode@2x.png';
+      '$_baseUrl/img/wn/$iconCode@2x.png';
 }
