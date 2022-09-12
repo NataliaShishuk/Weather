@@ -19,7 +19,7 @@ class LocationCard extends StatelessWidget {
         child: Text(
           location.cityName,
           style: const TextStyle(
-            color: AppColors.mainTextColor,
+            color: AppColors.primaryTextColor,
           ),
         ),
       ),

@@ -13,7 +13,8 @@ class ForecastElementModel {
   final MainModel main;
   final String date;
 
-  factory ForecastElementModel.fromJson(Map<String, dynamic> json) => ForecastElementModel(
+  factory ForecastElementModel.fromJson(Map<String, dynamic> json) =>
+      ForecastElementModel(
         weatherElements: List<WeatherElementModel>.from(json['weather']
             .map((element) => WeatherElementModel.fromJson(element))),
         main: MainModel.fromJson(json['main']),
@@ -24,6 +25,6 @@ class ForecastElementModel {
         weatherElements:
             weatherElements.map((element) => element.toEntity()).toList(),
         main: main.toEntity(),
-        date: date,
+        date: DateTime.parse(date),
       );
 }

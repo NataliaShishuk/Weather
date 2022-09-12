@@ -22,11 +22,11 @@ class _LocationsPageState extends State<LocationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.mainbackgroundColor,
+        backgroundColor: AppColors.primmaryBackgroundColor,
         title: const Text(
           'Select location',
           style: TextStyle(
-            color: AppColors.mainTextColor,
+            color: AppColors.primaryTextColor,
           ),
         ),
         leading: IconButton(
@@ -34,7 +34,7 @@ class _LocationsPageState extends State<LocationsPage> {
           onPressed: () => _backButtonPressed(context),
         ),
       ),
-      backgroundColor: AppColors.mainbackgroundColor,
+      backgroundColor: AppColors.primmaryBackgroundColor,
       body: AsyncBuilder<List<Location>>(
         future: _getAllLocations(),
         waiting: (context) => const CircularProgressIndicator(),

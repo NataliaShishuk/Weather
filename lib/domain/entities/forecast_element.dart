@@ -10,5 +10,5 @@ class ForecastElement {
 
   final List<WeatherElement> weatherElements;
   final Main main;
-  final String date;
+  final DateTime date;
 }
