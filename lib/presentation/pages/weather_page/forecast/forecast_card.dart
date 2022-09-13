@@ -24,7 +24,7 @@ class ForecastCard extends StatelessWidget {
       width: 150,
       child: Card(
         semanticContainer: true,
-        color: AppColors.secondaryBackgroundColor,
+        color: Colors.transparent,
         child: InkWell(
           highlightColor: AppColors.primmaryBackgroundColor.withAlpha(30),
           splashColor: AppColors.primmaryBackgroundColor.withAlpha(30),
@@ -56,7 +56,8 @@ class ForecastCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  _getTemperatureFormat(forecastElement.main.temperature),
+                  WeatherHelper.getTemperatureFormat(
+                      forecastElement.main.temperature),
                   style: const TextStyle(
                     fontSize: 20,
                     color: AppColors.primaryTextColor,
@@ -68,64 +69,5 @@ class ForecastCard extends StatelessWidget {
         ),
       ),
     );
-
-    return Container(
-      color: AppColors.primmaryBackgroundColor,
-      width: 150,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            children: [
-              const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
-              Text(
-                DateFormat(DateFormat.ABBR_MONTH_WEEKDAY_DAY)
-                    .format(DateTime.now())
-                    .toString(),
-                style: const TextStyle(color: Colors.white),
-              ),
-              Row(
-                children: [
-                  CachedNetworkImage(
-                    width: 80,
-                    fit: BoxFit.fill,
-                    imageUrl: forecastElement.weatherElements.first.iconUrl,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) =>
-                            CircularProgressIndicator(
-                                value: downloadProgress.progress),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                ],
-              ),
-              Text(
-                forecastElement.weatherElements.first.main,
-                style: const TextStyle(
-                  fontSize: 20,
-                  //color: color,
-                ),
-              ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 8)),
-              Text(
-                _getTemperatureFormat(forecastElement.main.temperature),
-                style: const TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
   }
-
-  int _roundTemperature(double temperature) => temperature.round();
-
-  String _getCurrentUnits() => '°';
-
-  String _getTemperatureFormat(double temperature) =>
-      '${_roundTemperature(temperature)}${_getCurrentUnits()}';
-
-  String _getDateFormat() => DateFormat(DateFormat.ABBR_MONTH_WEEKDAY_DAY)
-      .format(DateTime.now())
-      .toString();
 }

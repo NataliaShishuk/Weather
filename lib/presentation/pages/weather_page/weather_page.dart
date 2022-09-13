@@ -8,6 +8,7 @@ import 'package:weather/domain/usecases/get_current_weather.dart';
 import 'package:weather/presentation/app_colors.dart';
 import 'package:weather/presentation/pages/locations_page/locations_page.dart';
 import 'package:weather/presentation/pages/weather_page/failure_info.dart';
+import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sunrise_sunset.dart';
 import 'package:weather/presentation/pages/weather_page/weather/weather_header.dart';
 import 'package:weather/presentation/pages/weather_page/header_label.dart';
 import 'package:weather/presentation/pages/weather_page/forecast/daily_forecast.dart';
@@ -57,6 +58,8 @@ class _WeatherPageState extends State<WeatherPage> {
                     ),
                     const HeaderLabel(label: 'Forecast'),
                     DailyForecast(cityName: currentCityName),
+                    const HeaderLabel(label: 'Sunrise and sunset'),
+                    SunriseSunset(sys: weather.sys),
                   ],
                 ),
               ),
