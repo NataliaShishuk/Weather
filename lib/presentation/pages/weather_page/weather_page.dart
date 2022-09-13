@@ -88,7 +88,27 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   Widget _weatherError(Failure failure) {
-    return FailureInfo(failure: failure);
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FailureInfo(failure: failure),
+          const SizedBox(height: 15),
+          ElevatedButton(
+            onPressed: _pageRefresh,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.secondaryBackgroundColor,
+            ),
+            child: const Text(
+              'Refresh',
+              style: TextStyle(
+                color: AppColors.secondaryTextColor,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<void> _locationButtonPressed(BuildContext context) async {
