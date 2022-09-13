@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather/domain/entities/weather.dart';
 import 'package:weather/presentation/app_colors.dart';
 
 class WeatherLocation extends StatelessWidget {

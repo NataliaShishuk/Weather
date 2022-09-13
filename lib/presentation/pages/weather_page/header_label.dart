@@ -14,10 +14,7 @@ class HeaderLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 20,
-      ),
+      padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
       child: Text(
         label,
         style: TextStyle(

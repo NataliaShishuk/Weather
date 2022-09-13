@@ -18,8 +18,6 @@ class WeatherIcon extends StatelessWidget {
       height: size,
       fit: BoxFit.fill,
       imageUrl: iconUrl,
-      progressIndicatorBuilder: (context, url, downloadProgress) =>
-          CircularProgressIndicator(value: downloadProgress.progress),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }

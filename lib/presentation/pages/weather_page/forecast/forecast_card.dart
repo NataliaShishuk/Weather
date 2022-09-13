@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:weather/domain/entities/forecast_element.dart';
 import 'package:weather/domain/entities/weather_element.dart';
 import 'package:weather/presentation/app_colors.dart';

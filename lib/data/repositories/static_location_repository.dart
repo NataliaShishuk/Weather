@@ -1,5 +1,4 @@
 import 'package:weather/data/datasources/location_data_source.dart';
-import 'package:weather/data/datasources/static_location_data_source.dart';
 import 'package:weather/domain/entities/location.dart';
 import 'package:weather/domain/repositories/location_repository.dart';
 

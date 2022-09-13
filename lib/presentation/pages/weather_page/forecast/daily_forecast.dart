@@ -1,5 +1,6 @@
 import 'package:async_builder/async_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather/domain/entities/forecast.dart';
 import 'package:weather/domain/entities/forecast_element.dart';
 import 'package:weather/domain/failure.dart';
@@ -22,36 +23,13 @@ class DailyForecast extends StatelessWidget {
   Widget build(BuildContext context) {
     return AsyncBuilder<Result<Forecast, Failure>>(
       future: _getForecastByCity(cityName),
-      waiting: (context) => const CircularProgressIndicator(),
-      builder: (context, data) {
-        final forecastResult = data!;
-
-        if (forecastResult.isSuccess) {
-          final forecast = forecastResult.result!;
-
-          final dailyForecastElements =
-              _getDailyForecast(forecast.forecastElements);
-
-          return SizedBox(
-            height: 230,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: dailyForecastElements.length,
-              itemBuilder: (context, index) =>
-                  ForecastCard(forecastElement: dailyForecastElements[index]),
-            ),
-          );
-        } else {
-          return const Center(
-            child: Icon(
-              Icons.error_outline,
-              color: AppColors.primaryTextColor,
-              size: 150,
-            ),
-          );
-        }
-      },
+      waiting: (context) => _dailyForecastLoading(),
+      builder: (context, data) => _buildDayliForecast(data!),
     );
+  }
+
+  Future<Result<Forecast, Failure>> _getForecastByCity(String cityName) {
+    return _getForecast.execute(cityName);
   }
 
   List<ForecastElement> _getDailyForecast(
@@ -68,6 +46,42 @@ class DailyForecast extends StatelessWidget {
     return result;
   }
 
-  Future<Result<Forecast, Failure>> _getForecastByCity(String cityName) =>
-      _getForecast.execute(cityName);
+  Widget _buildDayliForecast(Result<Forecast, Failure> forecastResult) {
+    if (forecastResult.isSuccess) {
+      final forecast = forecastResult.result!;
+
+      final dailyForecastElements =
+          _getDailyForecast(forecast.forecastElements);
+
+      return _dailyForecastHasData(dailyForecastElements);
+    } else {
+      return _dailyForecastError();
+    }
+  }
+
+  Widget _dailyForecastLoading() {
+    return const SpinKitFadingCircle(color: AppColors.primaryTextColor);
+  }
+
+  Widget _dailyForecastHasData(List<ForecastElement> dailyForecastElements) {
+    return SizedBox(
+      height: 230,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: dailyForecastElements.length,
+        itemBuilder: (context, index) =>
+            ForecastCard(forecastElement: dailyForecastElements[index]),
+      ),
+    );
+  }
+
+  Widget _dailyForecastError() {
+    return const Center(
+      child: Icon(
+        Icons.error_outline,
+        color: AppColors.primaryTextColor,
+        size: 150,
+      ),
+    );
+  }
 }

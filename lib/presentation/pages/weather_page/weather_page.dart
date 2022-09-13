@@ -12,6 +12,7 @@ import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sunrise_s
 import 'package:weather/presentation/pages/weather_page/weather/weather_header.dart';
 import 'package:weather/presentation/pages/weather_page/header_label.dart';
 import 'package:weather/presentation/pages/weather_page/forecast/daily_forecast.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather/injection.dart' as di;
 
 class WeatherPage extends StatefulWidget {
@@ -35,47 +36,60 @@ class _WeatherPageState extends State<WeatherPage> {
       backgroundColor: AppColors.primmaryBackgroundColor,
       body: AsyncBuilder<Result<Weather, Failure>>(
         future: _getWeather(currentCityName),
-        waiting: (context) => const CircularProgressIndicator(),
-        builder: (context, data) {
-          final weatherResult = data!;
-
-          if (weatherResult.isSuccess) {
-            final weather = weatherResult.result!;
-
-            return RefreshIndicator(
-              onRefresh: _refresh,
-              color: AppColors.secondaryTextColor,
-              backgroundColor: AppColors.secondaryBackgroundColor,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(5),
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    WeatherHeader(
-                      weather: weather,
-                      locationOnPressed: () => _locationButtonPressed(context),
-                    ),
-                    const HeaderLabel(label: 'Forecast'),
-                    DailyForecast(cityName: currentCityName),
-                    const HeaderLabel(label: 'Sunrise and sunset'),
-                    SunriseSunset(sys: weather.sys),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            final failure = weatherResult.failure!;
-
-            return FailureInfo(failure: failure);
-          }
-        },
+        waiting: (context) => _wetherLoading(),
+        builder: (context, data) => _buildWeather(data!),
       ),
     );
   }
 
-  Future<Result<Weather, Failure>> _getWeather(String cityName) =>
-      _getCurrentWeather.execute(cityName);
+  Future<Result<Weather, Failure>> _getWeather(String cityName) {
+    return _getCurrentWeather.execute(cityName);
+  }
+
+  Widget _buildWeather(Result<Weather, Failure> weatherResult) {
+    if (weatherResult.isSuccess) {
+      final weather = weatherResult.result!;
+
+      return _weatherHasData(weather);
+    } else {
+      final failure = weatherResult.failure!;
+
+      return _weatherError(failure);
+    }
+  }
+
+  Widget _wetherLoading() {
+    return const SpinKitFadingCircle(color: AppColors.primaryTextColor);
+  }
+
+  Widget _weatherHasData(Weather weather) {
+    return RefreshIndicator(
+      onRefresh: _pageRefresh,
+      color: AppColors.secondaryTextColor,
+      backgroundColor: AppColors.secondaryBackgroundColor,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(5),
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            WeatherHeader(
+              weather: weather,
+              locationOnPressed: () => _locationButtonPressed(context),
+            ),
+            const HeaderLabel(label: 'Forecast'),
+            DailyForecast(cityName: currentCityName),
+            const HeaderLabel(label: 'Sunrise and sunset'),
+            SunriseSunset(sys: weather.sys),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _weatherError(Failure failure) {
+    return FailureInfo(failure: failure);
+  }
 
   Future<void> _locationButtonPressed(BuildContext context) async {
     var location = await Navigator.push<Location>(
@@ -92,5 +106,5 @@ class _WeatherPageState extends State<WeatherPage> {
     setState(() => currentCityName = location.cityName);
   }
 
-  Future<void> _refresh() async => setState(() {});
+  Future<void> _pageRefresh() async => setState(() {});
 }
