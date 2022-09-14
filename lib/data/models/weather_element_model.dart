@@ -1,4 +1,3 @@
-import 'package:weather/data/helpers/api_url_formater.dart';
 import 'package:weather/domain/entities/weather_element.dart';
 
 class WeatherElementModel {
@@ -22,6 +21,9 @@ class WeatherElementModel {
   WeatherElement toEntity() => WeatherElement(
         main: main,
         description: description,
-        iconUrl: ApiUrlFormater.getWeatherIconUrl(iconCode),
+        iconUrl: _getWeatherIconUrl(iconCode),
       );
+
+  static String _getWeatherIconUrl(String iconCode) =>
+      'https://openweathermap.org/img/wn/$iconCode@2x.png';
 }

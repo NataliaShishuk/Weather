@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:weather/presentation/pages/weather_page/weather_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'injection.dart' as di;
 
-void main() {
+Future main() async {
+  await dotenv.load();
   di.init();
   runApp(const MyApp());
 }

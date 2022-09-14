@@ -19,7 +19,7 @@ class SysModel {
         sunset: _convertEpochToDateTime(sunset),
       );
 
-  DateTime _convertEpochToDateTime(int timestamp) =>
+  static DateTime _convertEpochToDateTime(int timestamp) =>
       DateTime.fromMillisecondsSinceEpoch(timestamp * 1000, isUtc: true)
           .toLocal();
 }
