@@ -35,10 +35,12 @@ class _LocationsPageState extends State<LocationsPage> {
         ),
       ),
       backgroundColor: AppColors.primmaryBackgroundColor,
-      body: AsyncBuilder<List<Location>>(
-        future: _getAllLocations(),
-        waiting: (context) => const CircularProgressIndicator(),
-        builder: (context, data) => LocationList(locations: data!)
+      body: SafeArea(
+        child: AsyncBuilder<List<Location>>(
+          future: _getAllLocations(),
+          waiting: (context) => const CircularProgressIndicator(),
+          builder: (context, data) => LocationList(locations: data!)
+        ),
       ),
     );
   }

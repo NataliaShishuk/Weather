@@ -21,6 +21,7 @@ class ForecastCard extends StatelessWidget {
     return SizedBox(
       width: 150,
       child: Card(
+        margin: EdgeInsets.zero,
         semanticContainer: true,
         color: Colors.transparent,
         child: InkWell(

@@ -66,11 +66,13 @@ class DailyForecast extends StatelessWidget {
   Widget _dailyForecastHasData(List<ForecastElement> dailyForecastElements) {
     return SizedBox(
       height: 230,
-      child: ListView.builder(
+      child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: dailyForecastElements.length,
         itemBuilder: (context, index) =>
             ForecastCard(forecastElement: dailyForecastElements[index]),
+        separatorBuilder: (context, index) => const SizedBox(width: 5),
       ),
     );
   }

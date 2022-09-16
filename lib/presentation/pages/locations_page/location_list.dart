@@ -13,6 +13,7 @@ class LocationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: locations.length,
       itemBuilder: (context, index) => LocationCard(
         location: locations[index],

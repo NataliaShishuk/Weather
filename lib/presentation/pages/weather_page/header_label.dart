@@ -5,7 +5,7 @@ class HeaderLabel extends StatelessWidget {
   const HeaderLabel({
     super.key,
     required this.label,
-    this.size = 30,
+    this.size = 25,
   });
 
   final String label;
@@ -14,7 +14,7 @@ class HeaderLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
       child: Text(
         label,
         style: TextStyle(

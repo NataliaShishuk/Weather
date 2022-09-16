@@ -34,10 +34,12 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primmaryBackgroundColor,
-      body: AsyncBuilder<Result<Weather, Failure>>(
-        future: _getWeather(currentCityName),
-        waiting: (context) => _wetherLoading(),
-        builder: (context, data) => _buildWeather(data!),
+      body: SafeArea(
+        child: AsyncBuilder<Result<Weather, Failure>>(
+          future: _getWeather(currentCityName),
+          waiting: (context) => _wetherLoading(),
+          builder: (context, data) => _buildWeather(data!),
+        ),
       ),
     );
   }
@@ -69,7 +71,7 @@ class _WeatherPageState extends State<WeatherPage> {
       backgroundColor: AppColors.secondaryBackgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(5),
-        physics: const AlwaysScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
