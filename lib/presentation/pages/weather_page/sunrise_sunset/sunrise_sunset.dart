@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/sys.dart';
+import 'package:weather/presentation/pages/weather_page/section.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sun_card.dart';
 
 class SunriseSunset extends StatelessWidget {
@@ -12,27 +13,25 @@ class SunriseSunset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 15,
-        horizontal: 10,
-      ),
-      color: Theme.of(context).backgroundColor,
+    return Section(
+      onPressed: () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SunCard(
-              title: 'Sunrise',
-              date: sys.sunrise,
-              image: Image.asset(
-                'assets/images/sunrise.png',
-              )),
+            title: 'Sunrise',
+            date: sys.sunrise,
+            image: Image.asset(
+              'assets/images/sunrise.png',
+            ),
+          ),
           SunCard(
-              title: 'Sunset',
-              date: sys.sunset,
-              image: Image.asset(
-                'assets/images/sunset.png',
-              ))
+            title: 'Sunset',
+            date: sys.sunset,
+            image: Image.asset(
+              'assets/images/sunset.png',
+            ),
+          ),
         ],
       ),
     );
