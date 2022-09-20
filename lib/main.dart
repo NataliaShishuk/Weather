@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/presentation/pages/weather_page/weather_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:weather/presentation/theme.dart';
+
 import 'injection.dart' as di;
 
 Future main() async {
@@ -17,9 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Weather',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightThemeData(context),
+      darkTheme: darkThemeData(context),
+      themeMode: ThemeMode.dark,
       home: const WeatherPage(),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/location.dart';
-import 'package:weather/presentation/app_colors.dart';
 
 class LocationCard extends StatelessWidget {
   const LocationCard({
@@ -18,9 +17,7 @@ class LocationCard extends StatelessWidget {
         onPressed: () => locationPressed(context),
         child: Text(
           location.cityName,
-          style: const TextStyle(
-            color: AppColors.primaryTextColor,
-          ),
+          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 15),
         ),
       ),
     );

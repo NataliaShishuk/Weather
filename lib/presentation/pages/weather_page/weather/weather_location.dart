@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/app_colors.dart';
 
 class WeatherLocation extends StatelessWidget {
   const WeatherLocation({
@@ -18,15 +17,12 @@ class WeatherLocation extends StatelessWidget {
     return TextButton.icon(
       icon: Icon(
         Icons.location_on_outlined,
-        color: AppColors.secondaryTextColor,
+        color: Theme.of(context).colorScheme.primary,
         size: size,
       ),
       label: Text(
         cityName,
-        style: TextStyle(
-          color: AppColors.secondaryTextColor,
-          fontSize: size,
-        ),
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: size),
       ),
       onPressed: onPressed,
     );

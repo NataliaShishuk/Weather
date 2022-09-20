@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/app_colors.dart';
 import 'package:weather/presentation/weather_helper.dart';
 
 class SunCard extends StatelessWidget {
@@ -21,17 +19,12 @@ class SunCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            color: AppColors.primaryTextColor,
-          ),
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         const SizedBox(height: 10),
         Text(
           WeatherHelper.getHoursMinuteDateFormat(date),
-          style: const TextStyle(
-            color: AppColors.primaryTextColor,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
         image

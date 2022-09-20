@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/sys.dart';
-import 'package:weather/presentation/app_colors.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sun_card.dart';
 
 class SunriseSunset extends StatelessWidget {
@@ -18,7 +17,7 @@ class SunriseSunset extends StatelessWidget {
         vertical: 15,
         horizontal: 10,
       ),
-      color: AppColors.secondaryBackgroundColor,
+      color: Theme.of(context).backgroundColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

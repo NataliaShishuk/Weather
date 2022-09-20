@@ -5,12 +5,11 @@ import 'package:weather/domain/entities/weather.dart';
 import 'package:weather/domain/failure.dart';
 import 'package:weather/domain/result.dart';
 import 'package:weather/domain/usecases/get_current_weather.dart';
-import 'package:weather/presentation/app_colors.dart';
 import 'package:weather/presentation/pages/locations_page/locations_page.dart';
 import 'package:weather/presentation/pages/weather_page/failure_info.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sunrise_sunset.dart';
 import 'package:weather/presentation/pages/weather_page/weather/weather_header.dart';
-import 'package:weather/presentation/pages/weather_page/header_label.dart';
+import 'package:weather/presentation/pages/weather_page/section_title.dart';
 import 'package:weather/presentation/pages/weather_page/forecast/daily_forecast.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather/injection.dart' as di;
@@ -33,7 +32,6 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primmaryBackgroundColor,
       body: SafeArea(
         child: AsyncBuilder<Result<Weather, Failure>>(
           future: _getWeather(currentCityName),
@@ -61,14 +59,14 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   Widget _wetherLoading() {
-    return const SpinKitFadingCircle(color: AppColors.primaryTextColor);
+    return SpinKitFadingCircle(color: Theme.of(context).colorScheme.primary);
   }
 
   Widget _weatherHasData(Weather weather) {
     return RefreshIndicator(
       onRefresh: _pageRefresh,
-      color: AppColors.secondaryTextColor,
-      backgroundColor: AppColors.secondaryBackgroundColor,
+      color: Theme.of(context).colorScheme.primary,
+      backgroundColor: Theme.of(context).backgroundColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(5),
         physics: const BouncingScrollPhysics(),
@@ -79,9 +77,9 @@ class _WeatherPageState extends State<WeatherPage> {
               weather: weather,
               locationOnPressed: () => _locationButtonPressed(context),
             ),
-            const HeaderLabel(label: 'Forecast'),
+            const SectionTitle(name: 'Forecast'),
             DailyForecast(cityName: currentCityName),
-            const HeaderLabel(label: 'Sunrise and sunset'),
+            const SectionTitle(name: 'Sunrise and sunset'),
             SunriseSunset(sys: weather.sys),
           ],
         ),
@@ -99,13 +97,11 @@ class _WeatherPageState extends State<WeatherPage> {
           ElevatedButton(
             onPressed: _pageRefresh,
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.secondaryBackgroundColor,
+              backgroundColor: Theme.of(context).backgroundColor,
             ),
-            child: const Text(
+            child: Text(
               'Refresh',
-              style: TextStyle(
-                color: AppColors.secondaryTextColor,
-              ),
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ),
         ],

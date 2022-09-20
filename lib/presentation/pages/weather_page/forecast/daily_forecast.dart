@@ -6,9 +6,8 @@ import 'package:weather/domain/entities/forecast_element.dart';
 import 'package:weather/domain/failure.dart';
 import 'package:weather/domain/result.dart';
 import 'package:weather/domain/usecases/get_forecast.dart';
-import 'package:weather/presentation/app_colors.dart';
-import 'package:weather/presentation/pages/weather_page/forecast/forecast_card.dart';
 import 'package:weather/injection.dart' as di;
+import 'package:weather/presentation/pages/weather_page/forecast/forecast_card.dart';
 
 class DailyForecast extends StatelessWidget {
   DailyForecast({
@@ -23,8 +22,8 @@ class DailyForecast extends StatelessWidget {
   Widget build(BuildContext context) {
     return AsyncBuilder<Result<Forecast, Failure>>(
       future: _getForecastByCity(cityName),
-      waiting: (context) => _dailyForecastLoading(),
-      builder: (context, data) => _buildDayliForecast(data!),
+      waiting: (context) => _dailyForecastLoading(context),
+      builder: (context, data) => _buildDayliForecast(context, data!),
     );
   }
 
@@ -46,7 +45,8 @@ class DailyForecast extends StatelessWidget {
     return result;
   }
 
-  Widget _buildDayliForecast(Result<Forecast, Failure> forecastResult) {
+  Widget _buildDayliForecast(
+      BuildContext context, Result<Forecast, Failure> forecastResult) {
     if (forecastResult.isSuccess) {
       final forecast = forecastResult.result!;
 
@@ -55,12 +55,12 @@ class DailyForecast extends StatelessWidget {
 
       return _dailyForecastHasData(dailyForecastElements);
     } else {
-      return _dailyForecastError();
+      return _dailyForecastError(context);
     }
   }
 
-  Widget _dailyForecastLoading() {
-    return const SpinKitFadingCircle(color: AppColors.primaryTextColor);
+  Widget _dailyForecastLoading(BuildContext context) {
+    return SpinKitFadingCircle(color: Theme.of(context).colorScheme.primary);
   }
 
   Widget _dailyForecastHasData(List<ForecastElement> dailyForecastElements) {
@@ -77,11 +77,11 @@ class DailyForecast extends StatelessWidget {
     );
   }
 
-  Widget _dailyForecastError() {
-    return const Center(
+  Widget _dailyForecastError(BuildContext context) {
+    return Center(
       child: Icon(
         Icons.error_outline,
-        color: AppColors.primaryTextColor,
+        color: Theme.of(context).colorScheme.primary,
         size: 150,
       ),
     );

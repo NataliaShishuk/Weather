@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/failure.dart';
-import 'package:weather/presentation/app_colors.dart';
 
 class FailureInfo extends StatelessWidget {
   const FailureInfo({super.key, required this.failure});
@@ -10,26 +9,23 @@ class FailureInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: buildFailureInfo(),
+      child: buildFailureInfo(context),
     );
   }
 
-  Widget buildFailureInfo() {
+  Widget buildFailureInfo(BuildContext context) {
     if (failure is ConnectionFailure) {
       return Column(
-        children: const [
+        children: [
           Icon(
             Icons.wifi_off,
-            color: AppColors.primaryTextColor,
+            color: Theme.of(context).colorScheme.primary,
             size: 150,
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Text(
             'Oops, no internet connection...',
-            style: TextStyle(
-              color: AppColors.primaryTextColor,
-              fontSize: 20,
-            ),
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
             textAlign: TextAlign.center,
           )
         ],
@@ -37,16 +33,16 @@ class FailureInfo extends StatelessWidget {
     } else {
       return Column(
         children: [
-          const Icon(
+          Icon(
             Icons.error_outline,
-            color: AppColors.primaryTextColor,
+            color: Theme.of(context).colorScheme.primary,
             size: 150,
           ),
           const SizedBox(height: 15),
           Text(
             failure.message,
-            style: const TextStyle(
-              color: AppColors.primaryTextColor,
+            style:  TextStyle(
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 20,
             ),
             textAlign: TextAlign.center,
