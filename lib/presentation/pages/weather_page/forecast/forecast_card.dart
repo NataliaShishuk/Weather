@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/forecast_element.dart';
 import 'package:weather/domain/entities/weather_element.dart';
 import 'package:weather/presentation/pages/weather_page/section.dart';
-import 'package:weather/presentation/weather_helper.dart';
+import 'package:weather/presentation/pages/formater.dart';
 import 'package:weather/presentation/pages/weather_page/weather_icon.dart';
 
 class ForecastCard extends StatelessWidget {
@@ -25,7 +25,7 @@ class ForecastCard extends StatelessWidget {
         children: [
           const SizedBox(height: 5),
           Text(
-            WeatherHelper.getMonthWeekdayDateFormat(forecastElement.date),
+            Formater.formatDateToMonthWeekday(forecastElement.date),
             style: Theme.of(context).textTheme.bodyText1,
           ),
           const SizedBox(height: 10),
@@ -41,7 +41,7 @@ class ForecastCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            WeatherHelper.getTemperatureFormat(
+            Formater.formatTemperatureWithUnits(
                 forecastElement.main.temperature),
             style:
                 Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),

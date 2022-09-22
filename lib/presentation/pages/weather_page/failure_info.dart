@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:weather/domain/failure.dart';
 
 class FailureInfo extends StatelessWidget {
-  const FailureInfo({super.key, required this.failure});
+  const FailureInfo({
+    super.key,
+    required this.failure,
+  });
 
   final Failure failure;
 
@@ -25,7 +28,8 @@ class FailureInfo extends StatelessWidget {
           const SizedBox(height: 15),
           Text(
             'Oops, no internet connection...',
-            style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
+            style:
+                Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
             textAlign: TextAlign.center,
           )
         ],
@@ -41,7 +45,7 @@ class FailureInfo extends StatelessWidget {
           const SizedBox(height: 15),
           Text(
             failure.message,
-            style:  TextStyle(
+            style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
               fontSize: 20,
             ),

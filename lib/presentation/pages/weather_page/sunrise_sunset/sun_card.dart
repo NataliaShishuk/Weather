@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/weather_helper.dart';
+import 'package:weather/presentation/pages/formater.dart';
 
 class SunCard extends StatelessWidget {
   const SunCard({
@@ -23,8 +23,11 @@ class SunCard extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          WeatherHelper.getHoursMinuteDateFormat(date),
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold),
+          Formater.formatDateToHoursMinute(date),
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              ?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
         image

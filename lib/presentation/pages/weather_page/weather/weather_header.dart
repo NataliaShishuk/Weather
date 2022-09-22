@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/weather.dart';
-import 'package:weather/presentation/weather_helper.dart';
+import 'package:weather/presentation/pages/formater.dart';
 import 'package:weather/presentation/pages/weather_page/weather/weather_location.dart';
 import 'package:weather/presentation/pages/weather_page/weather_icon.dart';
 
@@ -25,19 +25,21 @@ class WeatherHeader extends StatelessWidget {
             size: 150,
           ),
           Text(
-            WeatherHelper.getTemperatureFormat(weather.main.temperature),
+            Formater.formatTemperatureWithUnits(weather.main.temperature),
             style: Theme.of(context).textTheme.headline1,
           ),
           Text(
-              'Feels like ${WeatherHelper.getTemperatureFormat(weather.main.feelsLike)}',),
+            'Feels like ${Formater.formatTemperatureWithUnits(weather.main.feelsLike)}',
+          ),
           const SizedBox(height: 20),
           Text(
             weather.weatherElements.first.main,
-            style: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 25),
+            style:
+                Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 25),
           ),
           const SizedBox(height: 15),
           Text(
-            'Today · ${WeatherHelper.getMonthWeekdayDateFormat(DateTime.now())}',
+            'Today · ${Formater.formatDateToMonthWeekday(DateTime.now())}',
           ),
           const SizedBox(height: 5),
           WeatherLocation(
