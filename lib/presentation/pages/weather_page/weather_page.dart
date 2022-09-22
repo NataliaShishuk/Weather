@@ -33,10 +33,29 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: AsyncBuilder<Result<Weather, Failure>>(
-          future: _getWeather(currentCityName),
-          waiting: (context) => _wetherLoading(),
-          builder: (context, data) => _buildWeather(data!),
+        child: RefreshIndicator(
+          onRefresh: _pageRefresh,
+          color: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).backgroundColor,
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    constraints: const BoxConstraints(maxWidth: 625),
+                    child: AsyncBuilder<Result<Weather, Failure>>(
+                      future: _getWeather(currentCityName),
+                      waiting: (context) => _wetherLoading(),
+                      builder: (context, data) => _buildWeather(data!),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -63,27 +82,18 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   Widget _weatherHasData(Weather weather) {
-    return RefreshIndicator(
-      onRefresh: _pageRefresh,
-      color: Theme.of(context).colorScheme.primary,
-      backgroundColor: Theme.of(context).backgroundColor,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(5),
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WeatherHeader(
-              weather: weather,
-              locationOnPressed: () => _locationButtonPressed(context),
-            ),
-            const SectionTitle(name: 'Forecast'),
-            DailyForecast(cityName: currentCityName),
-            const SectionTitle(name: 'Sunrise and sunset'),
-            SunriseSunset(sys: weather.sys),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        WeatherHeader(
+          weather: weather,
+          locationOnPressed: () => _locationButtonPressed(context),
         ),
-      ),
+        const SectionTitle(name: 'Forecast'),
+        DailyForecast(cityName: currentCityName),
+        const SectionTitle(name: 'Sunrise and sunset'),
+        SunriseSunset(sys: weather.sys),
+      ],
     );
   }
 
