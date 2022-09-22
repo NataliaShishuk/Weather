@@ -101,7 +101,9 @@ class _WeatherPageState extends State<WeatherPage> {
             ),
             child: Text(
               'Refresh',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ),
         ],

@@ -13,7 +13,3 @@ const primaryTextDarkColor = Colors.white;
 
 const secondaryTextLightColor = Color.fromARGB(255, 160, 147, 125);
 const secondaryTextDarkColor = Color.fromARGB(255, 179, 182, 212);
-
-// Font Sizes
-const headline1FontSize = 60.0;
-const headline2FontSize = 25.0;

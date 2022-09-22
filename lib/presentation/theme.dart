@@ -13,22 +13,6 @@ ThemeData lightThemeData(BuildContext context) {
       primary: primaryTextLightColor,
       secondary: secondaryTextLightColor,
     ),
-    textTheme: const TextTheme(
-      headline1: TextStyle(
-        fontSize: headline1FontSize,
-        color: primaryTextLightColor,
-      ),
-      headline2: TextStyle(
-        fontSize: headline2FontSize,
-        color: primaryTextLightColor,
-      ),
-      bodyText1: TextStyle(
-        color: primaryTextLightColor,
-      ),
-      bodyText2: TextStyle(
-        color: secondaryTextLightColor,
-      ),
-    ),
   );
 }
 
@@ -43,22 +27,6 @@ ThemeData darkThemeData(BuildContext context) {
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryTextDarkColor,
       secondary: secondaryTextDarkColor,
-    ),
-    textTheme: const TextTheme(
-      headline1: TextStyle(
-        fontSize: headline1FontSize,
-        color: primaryTextDarkColor,
-      ),
-      headline2: TextStyle(
-        fontSize: headline2FontSize,
-        color: primaryTextDarkColor,
-      ),
-      bodyText1: TextStyle(
-        color: primaryTextDarkColor,
-      ),
-      bodyText2: TextStyle(
-        color: secondaryTextDarkColor,
-      ),
     ),
   );
 }

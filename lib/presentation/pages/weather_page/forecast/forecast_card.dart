@@ -26,7 +26,9 @@ class ForecastCard extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             Formater.formatDateToMonthWeekday(forecastElement.date),
-            style: Theme.of(context).textTheme.bodyText1,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
           const SizedBox(height: 10),
           WeatherIcon(
@@ -36,15 +38,19 @@ class ForecastCard extends StatelessWidget {
           const SizedBox(height: 15),
           Text(
             mainWeatherElement.main,
-            style:
-                Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 20),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 20,
+            ),
           ),
           const SizedBox(height: 10),
           Text(
             Formater.formatTemperatureWithUnits(
                 forecastElement.main.temperature),
-            style:
-                Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 20,
+            ),
           ),
         ],
       ),

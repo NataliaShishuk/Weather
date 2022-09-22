@@ -24,7 +24,9 @@ class _LocationsPageState extends State<LocationsPage> {
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
           'Select location',
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
@@ -36,7 +38,7 @@ class _LocationsPageState extends State<LocationsPage> {
         child: AsyncBuilder<List<Location>>(
           future: _getAllLocations(),
           waiting: (context) => const CircularProgressIndicator(),
-          builder: (context, data) => LocationList(locations: data!)
+          builder: (context, data) => LocationList(locations: data!),
         ),
       ),
     );

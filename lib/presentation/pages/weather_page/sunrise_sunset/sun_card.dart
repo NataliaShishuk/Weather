@@ -19,15 +19,17 @@ class SunCard extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         const SizedBox(height: 10),
         Text(
           Formater.formatDateToHoursMinute(date),
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 20),
         image

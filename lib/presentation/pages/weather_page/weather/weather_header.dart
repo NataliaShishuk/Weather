@@ -26,20 +26,31 @@ class WeatherHeader extends StatelessWidget {
           ),
           Text(
             Formater.formatTemperatureWithUnits(weather.main.temperature),
-            style: Theme.of(context).textTheme.headline1,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 60,
+            ),
           ),
           Text(
             'Feels like ${Formater.formatTemperatureWithUnits(weather.main.feelsLike)}',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+            ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           Text(
             weather.weatherElements.first.main,
-            style:
-                Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 25),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 25,
+            ),
           ),
           const SizedBox(height: 15),
           Text(
             'Today · ${Formater.formatDateToMonthWeekday(DateTime.now())}',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+            ),
           ),
           const SizedBox(height: 5),
           WeatherLocation(

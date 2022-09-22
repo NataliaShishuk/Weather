@@ -17,7 +17,9 @@ class LocationCard extends StatelessWidget {
         onPressed: () => locationPressed(context),
         child: Text(
           location.cityName,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 15),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
       ),
     );

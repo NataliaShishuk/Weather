@@ -23,13 +23,15 @@ class FailureInfo extends StatelessWidget {
           Icon(
             Icons.wifi_off,
             color: Theme.of(context).colorScheme.primary,
-            size: 150,
+            size: 120,
           ),
           const SizedBox(height: 15),
           Text(
             'Oops, no internet connection...',
-            style:
-                Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 20),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 15,
+            ),
             textAlign: TextAlign.center,
           )
         ],
@@ -40,14 +42,14 @@ class FailureInfo extends StatelessWidget {
           Icon(
             Icons.error_outline,
             color: Theme.of(context).colorScheme.primary,
-            size: 150,
+            size: 120,
           ),
           const SizedBox(height: 15),
           Text(
             failure.message,
             style: TextStyle(
               color: Theme.of(context).colorScheme.primary,
-              fontSize: 20,
+              fontSize: 15,
             ),
             textAlign: TextAlign.center,
           )
