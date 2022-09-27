@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/weather.dart';
 import 'package:weather/presentation/pages/formater.dart';
-import 'package:weather/presentation/pages/weather_page/weather/weather_location.dart';
 import 'package:weather/presentation/pages/weather_page/weather_icon.dart';
 
 class WeatherHeader extends StatelessWidget {
   const WeatherHeader({
     super.key,
     required this.weather,
-    required this.locationOnPressed,
   });
 
   final Weather weather;
-  final Function() locationOnPressed;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          const SizedBox(height: 35),
+          const SizedBox(height: 5),
           WeatherIcon(
             iconUrl: weather.weatherElements.first.iconUrl,
             size: 150,
@@ -52,11 +49,7 @@ class WeatherHeader extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
             ),
           ),
-          const SizedBox(height: 5),
-          WeatherLocation(
-            cityName: weather.cityName,
-            onPressed: locationOnPressed,
-          )
+          const SizedBox(height: 15),
         ],
       ),
     );

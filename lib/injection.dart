@@ -10,22 +10,15 @@ import 'package:weather/data/repositories/static_location_repository.dart';
 import 'package:weather/data/weather_url_provider.dart';
 import 'package:weather/domain/repositories/location_repository.dart';
 import 'package:weather/domain/repositories/weather_repository.dart';
-import 'package:weather/domain/usecases/get_current_weather.dart';
-import 'package:weather/domain/usecases/get_forecast.dart';
 import 'package:weather/domain/usecases/get_locations.dart';
+import 'package:weather/domain/usecases/get_weather.dart';
 
 final locator = GetIt.instance;
 
 void init() {
   // usecase
   locator.registerLazySingleton(
-    () => GetCurrentWeather(
-      weatherRepository: locator(),
-    ),
-  );
-
-  locator.registerLazySingleton(
-    () => GetForecast(
+    () => GetWeather(
       weatherRepository: locator(),
     ),
   );

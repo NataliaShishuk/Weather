@@ -12,19 +12,21 @@ class WeatherLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton.icon(
-      icon: Icon(
-        Icons.location_on_outlined,
-        color: Theme.of(context).colorScheme.primary,
-      ),
-      label: Text(
-        cityName,
-        style: TextStyle(
+    return Center(
+      child: TextButton.icon(
+        icon: Icon(
+          Icons.location_on_outlined,
           color: Theme.of(context).colorScheme.primary,
-          fontSize: 20,
         ),
+        label: Text(
+          cityName,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
+            fontSize: 20,
+          ),
+        ),
+        onPressed: onPressed,
       ),
-      onPressed: onPressed,
     );
   }
 }
