@@ -39,7 +39,7 @@ class WeatherHeader extends StatelessWidget {
             weather.weatherElements.first.main,
             style: TextStyle(
               color: Theme.of(context).colorScheme.secondary,
-              fontSize: 25,
+              fontSize: 21,
             ),
           ),
           const SizedBox(height: 15),

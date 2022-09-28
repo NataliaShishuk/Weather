@@ -94,13 +94,17 @@ class _WeatherPageState extends State<WeatherPage> {
           forecast: forecast,
         ),
         WeatherLocation(
+          countryCode: weather.sys.countryCode,
           cityName: currentCityName,
           onPressed: () => _locationButtonPressed(context),
         ),
         const SectionTitle(name: 'Forecast'),
         DailyForecast(forecast: forecast),
         const SectionTitle(name: 'Sunrise and sunset'),
-        SunriseSunset(sys: weather.sys),
+        SunriseSunset(
+          sunriseDate: weather.sys.sunrise,
+          sunsetDate: weather.sys.sunset,
+        ),
       ],
     );
   }
