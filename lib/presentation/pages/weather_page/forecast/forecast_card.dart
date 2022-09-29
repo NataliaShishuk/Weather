@@ -32,8 +32,8 @@ class ForecastCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           WeatherIcon(
-            iconUrl: mainWeatherElement.iconUrl,
-            size: 80,
+            iconCode: mainWeatherElement.iconCode,
+            size: 50,
           ),
           const SizedBox(height: 15),
           Text(

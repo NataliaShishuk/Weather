@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/presentation/pages/weather_page/section.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sun_card.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class SunriseSunset extends StatelessWidget {
   const SunriseSunset({
@@ -22,16 +23,12 @@ class SunriseSunset extends StatelessWidget {
           SunCard(
             title: 'Sunrise',
             date: sunriseDate,
-            image: Image.asset(
-              'assets/images/sunrise.png',
-            ),
+            iconData: WeatherIcons.sunrise,
           ),
           SunCard(
             title: 'Sunset',
             date: sunsetDate,
-            image: Image.asset(
-              'assets/images/sunset.png',
-            ),
+            iconData: WeatherIcons.sunset,
           ),
         ],
       ),

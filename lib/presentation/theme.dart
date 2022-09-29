@@ -13,6 +13,11 @@ ThemeData lightThemeData(BuildContext context) {
       primary: primaryTextLightColor,
       secondary: secondaryTextLightColor,
     ),
+    splashColor: primaryTextLightColor.withOpacity(0.3),
+    highlightColor: primaryTextLightColor.withOpacity(0.3),
+    iconTheme: const IconThemeData(
+      color: primaryTextLightColor,
+    ),
   );
 }
 
@@ -27,6 +32,11 @@ ThemeData darkThemeData(BuildContext context) {
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryTextDarkColor,
       secondary: secondaryTextDarkColor,
+    ),
+    splashColor: primaryTextDarkColor.withOpacity(0.3),
+    highlightColor: primaryTextDarkColor.withOpacity(0.3),
+    iconTheme: const IconThemeData(
+      color: primaryTextDarkColor,
     ),
   );
 }

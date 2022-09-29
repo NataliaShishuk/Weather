@@ -21,9 +21,6 @@ class WeatherElementModel {
   WeatherElement toEntity() => WeatherElement(
         main: main,
         description: description,
-        iconUrl: _getWeatherIconUrl(iconCode),
+        iconCode: iconCode,
       );
-
-  static String _getWeatherIconUrl(String iconCode) =>
-      'https://openweathermap.org/img/wn/$iconCode@2x.png';
 }

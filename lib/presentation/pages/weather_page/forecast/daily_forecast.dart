@@ -16,7 +16,7 @@ class DailyForecast extends StatelessWidget {
     final dailyForecastElements = _getDailyForecast(forecast);
 
     return SizedBox(
-      height: 230,
+      height: 215,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,

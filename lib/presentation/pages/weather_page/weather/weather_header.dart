@@ -18,8 +18,8 @@ class WeatherHeader extends StatelessWidget {
         children: [
           const SizedBox(height: 5),
           WeatherIcon(
-            iconUrl: weather.weatherElements.first.iconUrl,
-            size: 150,
+            iconCode: weather.weatherElements.first.iconCode,
+            size: 100,
           ),
           Text(
             Formater.formatTemperatureWithUnits(weather.main.temperature),
