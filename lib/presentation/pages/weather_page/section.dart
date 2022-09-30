@@ -4,11 +4,13 @@ class Section extends StatelessWidget {
   const Section({
     super.key,
     this.width,
+    this.height,
     this.onPressed,
     this.child,
   });
 
   final double? width;
+  final double? height;
   final Function()? onPressed;
   final Widget? child;
 
@@ -18,6 +20,7 @@ class Section extends StatelessWidget {
 
     return SizedBox(
       width: width,
+      height: height,
       child: Material(
         color: Theme.of(context).backgroundColor,
         borderRadius: borderRadius,

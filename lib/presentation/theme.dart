@@ -18,6 +18,15 @@ ThemeData lightThemeData(BuildContext context) {
     iconTheme: const IconThemeData(
       color: primaryTextLightColor,
     ),
+    tooltipTheme: TooltipThemeData(
+      decoration: BoxDecoration(
+        color: secondaryBackgroundLightColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      textStyle: const TextStyle(
+        color: primaryTextLightColor,
+      ),
+    ),
   );
 }
 
@@ -37,6 +46,15 @@ ThemeData darkThemeData(BuildContext context) {
     highlightColor: primaryTextDarkColor.withOpacity(0.3),
     iconTheme: const IconThemeData(
       color: primaryTextDarkColor,
+    ),
+    tooltipTheme: TooltipThemeData(
+      decoration: BoxDecoration(
+        color: secondaryBackgroundDarkColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      textStyle: const TextStyle(
+        color: primaryTextDarkColor,
+      ),
     ),
   );
 }

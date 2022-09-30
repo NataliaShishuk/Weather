@@ -7,6 +7,7 @@ import 'package:weather/domain/failure.dart';
 import 'package:weather/domain/result.dart';
 import 'package:weather/domain/usecases/get_weather.dart';
 import 'package:weather/presentation/pages/locations_page/locations_page.dart';
+import 'package:weather/presentation/pages/weather_page/details/details_section.dart';
 import 'package:weather/presentation/pages/weather_page/failure_info.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sunrise_sunset.dart';
 import 'package:weather/presentation/pages/weather_page/section_title.dart';
@@ -100,6 +101,8 @@ class _WeatherPageState extends State<WeatherPage> {
         ),
         const SectionTitle(name: 'Forecast'),
         DailyForecast(forecast: forecast),
+        const SectionTitle(name: 'Details'),
+        DetailSection(weather: weather),
         const SectionTitle(name: 'Sunrise and sunset'),
         SunriseSunset(
           sunriseDate: weather.sys.sunrise,
