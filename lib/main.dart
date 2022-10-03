@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/pages/weather_page/weather_page.dart';
+import 'package:weather/src/presentation/pages/weather_page/weather_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:weather/presentation/theme.dart';
+import 'package:weather/src/presentation/theme.dart';
 
-import 'injection.dart' as di;
+import 'src/injection.dart' as di;
 
 Future main() async {
   await dotenv.load();
