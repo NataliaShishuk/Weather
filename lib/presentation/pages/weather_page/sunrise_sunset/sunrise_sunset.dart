@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/pages/weather_page/section.dart';
+import 'package:weather/presentation/pages/weather_page/custom_card.dart';
 import 'package:weather/presentation/pages/weather_page/sunrise_sunset/sun_card.dart';
 import 'package:weather_icons/weather_icons.dart';
 
@@ -15,7 +15,7 @@ class SunriseSunset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Section(
+    return CustomCard(
       onPressed: () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

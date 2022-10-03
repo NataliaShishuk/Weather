@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Section extends StatelessWidget {
-  const Section({
+class CustomCard extends StatelessWidget {
+  const CustomCard({
     super.key,
     this.width,
     this.height,
@@ -18,22 +18,22 @@ class Section extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderRadius = BorderRadius.all(Radius.circular(15));
 
-    return SizedBox(
+    return Container(
       width: width,
       height: height,
-      child: Material(
+      decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
         borderRadius: borderRadius,
-        child: InkWell(
-          borderRadius: borderRadius,
-          onTap: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 15,
-              horizontal: 10,
-            ),
-            child: child,
+      ),
+      child: InkWell(
+        borderRadius: borderRadius,
+        onTap: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 15,
+            horizontal: 10,
           ),
+          child: child,
         ),
       ),
     );

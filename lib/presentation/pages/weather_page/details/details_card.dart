@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/pages/weather_page/section.dart';
+import 'package:weather/presentation/pages/weather_page/custom_card.dart';
 
 class DetailsCard extends StatelessWidget {
   const DetailsCard({
@@ -31,11 +31,10 @@ class DetailsCard extends StatelessWidget {
   }
 
   Widget _buildCard(BuildContext context) {
-    return Section(
-      width: 120,
-      height: 120,
+    return CustomCard(
       onPressed: () {},
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           icon,
           const SizedBox(height: 10),

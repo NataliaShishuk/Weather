@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/domain/entities/forecast_element.dart';
 import 'package:weather/domain/entities/weather_element.dart';
-import 'package:weather/presentation/pages/weather_page/section.dart';
+import 'package:weather/presentation/pages/weather_page/custom_card.dart';
 import 'package:weather/presentation/pages/formater.dart';
 import 'package:weather/presentation/pages/weather_page/weather_icon.dart';
 
@@ -18,7 +18,7 @@ class ForecastCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Section(
+    return CustomCard(
       width: 150,
       onPressed: () {},
       child: Column(
